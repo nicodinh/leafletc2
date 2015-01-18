@@ -124,95 +124,19 @@ cr.plugins_.Leafletc2 = function(runtime)
             }).addTo(this.map);
 
 		this.updatePosition();
-		this.runtime.tickMe(this);
-		
-		
+		this.runtime.tickMe(this);		
 	};
 	
-	// from built-in offical button runtime code.
-	
-	instanceProto.updatePosition = function(first) {
-		
-		
-		/*
-		var left = this.layer.layerToCanvas(this.x, this.y, true);	
-		var top = this.layer.layerToCanvas(this.x, this.y, false);
-		var right = this.layer.layerToCanvas(this.x + this.width, this.y + this.height, true);
-		var bottom = this.layer.layerToCanvas(this.x + this.width, this.y + this.height, false);
-		*/
-		
-		
-		//var left = this.layer.layerToCanvas(this.x, this.y, true);	
-		//var top = this.layer.layerToCanvas(this.x, this.y, false);
-		
-		var right = this.layer.layerToCanvas(this.x + this.width, this.y + this.height, true);
-		var bottom = this.layer.layerToCanvas(this.x + this.width, this.y + this.height, false);
-		
-		
-		
-		
-
-		//console.log(this.x);
-		//console.log(this.y);
-
-/*
-		console.log("left " + left);
-		console.log("top " +top);
-		console.log("right " +right);
-		console.log("bottom " +bottom);
-*/
-		// Is entirely offscreen or invisible: hide
-/*
-		if (!this.visible || !this.layer.visible || right <= 0 || bottom <= 0 || left >= this.runtime.width || top >= this.runtime.height)
-		{
-			jQuery(this.elem).hide();
-			return;
-		}
-
-		// Truncate to canvas size
-		if (left < 1)
-			left = 1;
-		if (top < 1)
-			top = 1;
-		if (right >= this.runtime.width)
-			right = this.runtime.width - 1;
-		if (bottom >= this.runtime.height)
-			bottom = this.runtime.height - 1;
-
-		jQuery(this.elem).show();
-*/
-		
-		// left 255  	-> 126
-		// top 155 		-> 56
-		
-		//var left = 126;
-		//var top = 56.5;
-		
+	instanceProto.updatePosition = function(first) 
+	{	
 		var left = this.x - (this.width / 2);
 		var top = this.y - (this.height / 2);
-		
 		var offx = left + jQuery(this.runtime.canvas).offset().left;
 		var offy = top + jQuery(this.runtime.canvas).offset().top;
-		
-		//console.log("a " + offx); //668
-		//console.log("b " + offy); //393
-		//console.log("c " + jQuery(this.runtime.canvas).offset().left); //413
-		//console.log("d " + jQuery(this.runtime.canvas).offset().top); //238
-		
 		jQuery(this.elem).offset({left: offx, top: offy});
-		//jQuery(this.elem).width(right - left);
-		//jQuery(this.elem).height(bottom - top);
-		
-		
-		/*
-		//rounding position & width to avoid jitter
-		this.elem.width = Math.round(this.elem.width);
-		this.elem.height = Math.round(this.elem.height);
-		this.elem.x = Math.round(this.elem.x);
-		this.elem.y = Math.round(this.elem.y);
-		*/	
 	};
-	instanceProto.tick = function() {
+	instanceProto.tick = function()
+	{
 		this.updatePosition();
 	};
 	// only called if a layout object - draw to a canvas 2D context
