@@ -86,40 +86,40 @@ cr.plugins_.Leafletc2 = function(runtime)
 			// Map State Options
 			center: [this.properties[1], this.properties[2]], // [Latitude , Longitude]
 			zoom: this.properties[3],
-			layers: null,
+			layers: null, /* TODO */
 			minZoom: this.properties[5],
 			maxZoom: this.properties[6],	
-			maxBounds: null, //[[this.properties[7] , this.properties[8]], [this.properties[9] , this.properties[10]]], // [[Latitude , Longitude], [Latitude , Longitude]]	
+			maxBounds: null, /* TODO */ //[[this.properties[7] , this.properties[8]], [this.properties[9] , this.properties[10]]], // [[Latitude , Longitude], [Latitude , Longitude]]	
 			crs: this.crs,
 			// Interaction Options
-			dragging: true,			
-			touchZoom: true,			
-			scrollWheelZoom: true,			
-			doubleClickZoom: true,			
-			boxZoom: true,			
-			tap: true,			
-			tapTolerance: 15,			
-			trackResize: true,			
-			worldCopyJump: false,			
-			closePopupOnClick: true,
-			bounceAtZoomLimits: true,
+			dragging: this.properties[12] === 0 ? true : false,			
+			touchZoom: this.properties[13] === 0 ? true : false,			
+			scrollWheelZoom: this.properties[14] === 0 ? true : false,			
+			doubleClickZoom: this.properties[15] === 0 ? true : false,			
+			boxZoom: this.properties[16] === 0 ? true : false,			
+			tap: this.properties[17] === 0 ? true : false,			
+			tapTolerance: this.properties[18],			
+			trackResize: this.properties[19] === 0 ? true : false,			
+			worldCopyJump: this.properties[20] === 1 ? false : true,			
+			closePopupOnClick: this.properties[21] === 0 ? true : false,
+			bounceAtZoomLimits: this.properties[22] === 0 ? true : false,
 			// Keyboard Navigation Options
-			keyboard: true,
-			keyboardPanOffset: 80,
-			keyboardZoomOffset: 1,
+			keyboard: this.properties[23] === 0 ? true : false,
+			keyboardPanOffset: this.properties[24],
+			keyboardZoomOffset: this.properties[25],
 			// Panning Inertia Options
-			inertia: true,
-			inertiaDeceleration: 3000,
-			inertiaMaxSpeed: 1500,
-			inertiaThreshold: 14,
+			inertia: this.properties[26] === 0 ? true : false,
+			inertiaDeceleration: this.properties[27],
+			inertiaMaxSpeed: this.properties[28],
+			inertiaThreshold: this.properties[29] === 0 ? 14 : 32,
 			// Control options
-			zoomControl: true,
-			attributionControl: true,
+			zoomControl: this.properties[30] === 0 ? true : false,
+			attributionControl: this.properties[31] === 0 ? true : false,
 			// Animation options
-			fadeAnimation: true,
-			zoomAnimation: true,
-			zoomAnimationThreshold: 4,
-			markerZoomAnimation: true,
+			fadeAnimation: this.properties[32] === 0 ? true : false,
+			zoomAnimation: this.properties[33] === 0 ? true : false,
+			zoomAnimationThreshold: this.properties[34],
+			markerZoomAnimation: this.properties[35] === 0 ? true : false,
 		});
 		
 		// TileLayer
