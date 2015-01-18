@@ -123,7 +123,7 @@ cr.plugins_.Leafletc2 = function(runtime)
 		});
 		
 		// TileLayer
-		var tileLayer = this.properties[0] || 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+		this.tileLayer = this.properties[0] || 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 		var attribution	= this.properties[36] || 'Map data &copy;';
 		
 		L.tileLayer(
