@@ -4,7 +4,7 @@
 		"name":			"Leafletc2",				// as appears in 'insert object' dialog, can be changed as long as "id" stays the same
 		"id":			"Leafletc2",				// this is used to identify this plugin and is saved to the project; never change it
 		"version":		"0.1",					// (float in x.y format) Plugin version - C2 shows compatibility warnings based on this
-		"description":	"Leaftletjs plugin for Construct 2",
+		"description":	"leaftletjs plugin for Construct 2",
 		"author":		"AZARI Nicolas",
 		"help url":		"http://nicolas.azari.fr/construct2/plugins/leafletc2",
 		"category":		"General",				// Prefer to re-use existing categories, but you can set anything here
