@@ -148,10 +148,10 @@ var property_list = [
 	new cr.Property(ept_combo,		"attributionControl",		"True",			"Whether the attribution control is added to the map by default.", "True|False"),
 	
 	new cr.Property(ept_section,	"Animation options",		""),
-	new cr.Property(ept_combo,		"fadeAnimation",			"Default",	"Whether the tile fade animation is enabled. By default it's enabled in all browsers that support CSS3 Transitions except Android.", "Default|True|False"),
-	new cr.Property(ept_combo,		"zoomAnimation",			"Default",	"Whether the tile zoom animation is enabled. By default it's enabled in all browsers that support CSS3 Transitions except Android.", "Default|True|False"),
+	new cr.Property(ept_combo,		"fadeAnimation",			"True",	"Whether the tile fade animation is enabled. By default it's enabled in all browsers that support CSS3 Transitions except Android.", "True|False"),
+	new cr.Property(ept_combo,		"zoomAnimation",			"True",	"Whether the tile zoom animation is enabled. By default it's enabled in all browsers that support CSS3 Transitions except Android.", "True|False"),
 	new cr.Property(ept_integer,	"zoomAnimationThreshold",	1,			"Won't animate zoom if the zoom difference exceeds this value."),
-	new cr.Property(ept_combo,		"markerZoomAnimation",		"Default",	"Whether markers animate their zoom with the zoom animation, if disabled they will disappear for the length of the animation. By default it's enabled in all browsers that support CSS3 Transitions except Android.", "Default|True|False"),
+	new cr.Property(ept_combo,		"markerZoomAnimation",		"True",	"Whether markers animate their zoom with the zoom animation, if disabled they will disappear for the length of the animation. By default it's enabled in all browsers that support CSS3 Transitions except Android.", "True|False"),
 	
 	new cr.Property(ept_section,	"TileLayer Options",		""),	
 	new cr.Property(ept_integer,	"minZoom",	    			0,			"Minimum zoom number."),
