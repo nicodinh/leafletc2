@@ -6,7 +6,7 @@
 		"version":		"0.1",					// (float in x.y format) Plugin version - C2 shows compatibility warnings based on this
 		"description":	"leaftletjs plugin for Construct 2",
 		"author":		"AZARI Nicolas",
-		"help url":		"http://nicolas.azari.fr/construct2/plugins/leafletc2",
+		"help url":		"https://github.com/nicodinh/leafletc2",
 		"category":		"General",				// Prefer to re-use existing categories, but you can set anything here
 		"type":			"world",				// either "world" (appears in layout and is drawn), else "object"
 		"rotatable":	false,					// only used when "type" is "world".  Enables an angle property on the object.
