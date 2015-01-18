@@ -101,9 +101,9 @@ ACESDone();
 // new cr.Property(ept_font,		name,	"Arial,-16", 	description)		// a font with the given face name and size
 // new cr.Property(ept_combo,		name,	"Item 1",		description, "Item 1|Item 2|Item 3")	// a dropdown list (initial_value is string of initially selected item)
 // new cr.Property(ept_link,		name,	link_text,		description, "firstonly")		// has no associated value; simply calls "OnPropertyChanged" on click
+// property_list[1].name = Map State Option
 
 var property_list = [
-	new cr.Property(ept_text, 		"id",			"map",													"An example property."),
 	new cr.Property(ept_text, 		"tileLayer",	"http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",	"An example property."),
 	
 	new cr.Property(ept_section,	"Map State Options",			""),
@@ -156,7 +156,7 @@ var property_list = [
 	new cr.Property(ept_section,	"TileLayer Options",		""),	
 	new cr.Property(ept_integer,	"minZoom",	    			0,			"Minimum zoom number."),
 	new cr.Property(ept_integer,	"maxZoom",	    			18,			"Maximum zoom number."), 
-	new cr.Property(ept_text,		"maxNativeZoom",			null,		"Maximum zoom number the tiles source has available. If it is specified, the tiles on all zoom levels higher than maxNativeZoom will be loaded from maxZoom level and auto-scaled."),// type int
+	new cr.Property(ept_text,		"maxNativeZoom",			null,		"Maximum zoom number the tiles source has available. If it is specified, the tiles on all zoom levels higher than maxNativeZoom will be loaded from maxZoom level and auto-scaled.", "", true),// type int
 	new cr.Property(ept_integer,	"tileSize",	    			256,		"Tile size (width and height in pixels, assuming tiles are square)."),
 	new cr.Property(ept_text, 		"subdomains",				"abc",		"Subdomains of the tile service. Can be passed in the form of one string (where each letter is a subdomain name) or an array of strings."),
 	new cr.Property(ept_text, 		"errorTileUrl",				"",			"URL to the tile image to show in place of the tile that failed to load."),
@@ -167,7 +167,7 @@ var property_list = [
 	new cr.Property(ept_integer,	"zoomOffset",	    		0,			"The zoom number used in tile URLs will be offset with this value."), 
 	new cr.Property(ept_combo,		"zoomReverse",	   			"False",			"If set to true, the zoom number used in tile URLs will be reversed (maxZoom - zoom instead of zoom)", "True|False"), 
 	new cr.Property(ept_float,		"opacity",	    			1.0,		"The opacity of the tile layer."), 
-	new cr.Property(ept_text,		"zIndex",	    			null,		"The explicit zIndex of the tile layer. Not set by default."), // type int
+	new cr.Property(ept_text,		"zIndex",	    			null,		"The explicit zIndex of the tile layer. Not set by default.", "", true), // type int
 	new cr.Property(ept_combo,		"unloadInvisibleTiles",		"Default",	"If true, all the tiles that are not visible after panning are removed (for better performance). true by default on mobile WebKit, otherwise false.", "Default|True|False"), // type bool
 	new cr.Property(ept_combo,		"updateWhenIdle",	    	"Default",	"If false, new tiles are loaded during panning, otherwise only after it (for better performance). true by default on mobile WebKit, otherwise false.", "Default|True|False"), // type bool
 	new cr.Property(ept_combo,		"detectRetina",	    		"False",	"If true and user is on a retina display, it will request four tiles of half the specified size and a bigger zoom level in place of one to utilize the high resolution.", "True|False"), 
@@ -210,8 +210,10 @@ function IDEInstance(instance, type)
 	this.properties = {};
 	
 	for (var i = 0; i < property_list.length; i++)
+	{
 		this.properties[property_list[i].name] = property_list[i].initial_value;
-		
+		//alert(property_list[i].initial_value);
+	}	
 	// Plugin-specific variables
 	// this.myValue = 0...
 }
@@ -229,6 +231,16 @@ IDEInstance.prototype.OnDoubleClicked = function()
 // Called after a property has been changed in the properties bar
 IDEInstance.prototype.OnPropertyChanged = function(property_name)
 {
+/*
+	if (property_name === "crs")
+	{
+		if (this.properties["crs"] === "L.CRS.EPSG3857") 
+		{
+			alert(this.properties[property_list[12].name]);	
+		}
+	
+	}
+*/
 }
 
 // For rendered objects to load fonts or textures
