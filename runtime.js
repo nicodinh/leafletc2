@@ -82,7 +82,8 @@ cr.plugins_.Leafletc2 = function(runtime)
 			this.crs = L.CRS.Simple;
 		
 		// map	
-		this.map = L.map('map' + this.uid, {
+		this.map = L.map('map' + this.uid,
+		{
 			// Map State Options
 			center: [this.properties[1], this.properties[2]], // [Latitude , Longitude]
 			zoom: this.properties[3],
@@ -123,14 +124,33 @@ cr.plugins_.Leafletc2 = function(runtime)
 		});
 		
 		// TileLayer
-		this.tileLayer = this.properties[0] || 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-		var attribution	= this.properties[36] || 'Map data &copy;';
-		
+		var tileLayer = this.properties[0] || 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 		L.tileLayer(
-            tileLayer, {
-            attribution: attribution,
-            //maxZoom: maxZoom,
-            }).addTo(this.map);
+            tileLayer,
+			{
+				minZoom: this.properties[36],
+				maxZoom: this.properties[37],
+				maxNativeZoom: null, /* TODO */
+				tileSize: this.properties[39],
+				subdomains: this.properties[40],
+				errorTileUrl: this.properties[41],
+				attribution: this.properties[42],
+				tms: this.properties[43] === 1 ? false : true,
+				continuousWorld: this.properties[44] === 1 ? false : true,
+				noWrap: this.properties[45] === 1 ? false : true,
+				zoomOffset: this.properties[46],
+				zoomReverse: this.properties[47] === 1 ? false : true,
+				opacity: this.properties[48],
+				zIndex: null, /* TODO */
+				unloadInvisibleTiles: this.properties[50] === 1 ? false : true,
+				updateWhenIdle: this.properties[51] === 1 ? false : true,
+				detectRetina: this.properties[52] === 1 ? false : true,
+				reuseTiles: this.properties[53] === 1 ? false : true,
+				BoundsLatitudeSouthWest: null,
+				BoundsLongitudeSouthWest: null,
+				BoundsLatitudeNorthEast: null,
+				BoundsLongitudeNorthEast: null,
+			}).addTo(this.map);
 
 		this.updatePosition();
 		this.runtime.tickMe(this);		
