@@ -70,18 +70,27 @@ cr.plugins_.Leafletc2 = function(runtime)
 		jQuery(this.elem).appendTo(this.runtime.canvasdiv ? this.runtime.canvasdiv : "body");
 		
 		console.log(this.properties);
-		console.log(this.layer);
 		
-		// Map
-		this.map = L.map(this.properties[0] + this.uid, {
+		// map options value
+		if (this.properties[11] === 0)
+			this.crs = L.CRS.EPSG3857;	
+		else if (this.properties[11] === 1)
+			this.crs = L.CRS.EPSG4326;
+		else if (this.properties[11] === 2)
+			this.crs = L.CRS.EPSG3395;
+		else
+			this.crs = L.CRS.Simple;
+		
+		// map	
+		this.map = L.map('map' + this.uid, {
 			// Map State Options
-			center: [this.properties[2], this.properties[3]], // [Latitude , Longitude]
-			zoom: this.properties[4],
+			center: [this.properties[1], this.properties[2]], // [Latitude , Longitude]
+			zoom: this.properties[3],
 			layers: null,
-			minZoom: this.properties[6],
-			maxZoom: this.properties[7],	
-			maxBounds: null, // [[Latitude , Longitude], [Latitude , Longitude]]	
-			crs: L.CRS.EPSG3857,
+			minZoom: this.properties[5],
+			maxZoom: this.properties[6],	
+			maxBounds: null, //[[this.properties[7] , this.properties[8]], [this.properties[9] , this.properties[10]]], // [[Latitude , Longitude], [Latitude , Longitude]]	
+			crs: this.crs,
 			// Interaction Options
 			dragging: true,			
 			touchZoom: true,			
@@ -114,8 +123,8 @@ cr.plugins_.Leafletc2 = function(runtime)
 		});
 		
 		// TileLayer
-		var tileLayer = this.properties[1] || 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-		var attribution	= this.properties[37] || 'Map data &copy;';
+		var tileLayer = this.properties[0] || 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+		var attribution	= this.properties[36] || 'Map data &copy;';
 		
 		L.tileLayer(
             tileLayer, {
@@ -174,49 +183,7 @@ cr.plugins_.Leafletc2 = function(runtime)
 	Acts.prototype.MyAction = function (myparam)
 	{
 		// alert the message
-		alert(myparam);
-		
-		
-		
-		/*
-		var map = L.map('map').setView([51.505, -0.09], 13);
-
-		L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-			maxZoom: 18,
-			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-			id: 'examples.map-i875mjb7'
-		}).addTo(map);
-
-
-		L.marker([51.5, -0.09]).addTo(map)
-			.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
-
-		L.circle([51.508, -0.11], 500, {
-			color: 'red',
-			fillColor: '#f03',
-			fillOpacity: 0.5
-		}).addTo(map).bindPopup("I am a circle.");
-
-		L.polygon([
-			[51.509, -0.08],
-			[51.503, -0.06],
-			[51.51, -0.047]
-		]).addTo(map).bindPopup("I am a polygon.");
-
-
-		var popup = L.popup();
-
-		function onMapClick(e) {
-			popup
-				.setLatLng(e.latlng)
-				.setContent("You clicked the map at " + e.latlng.toString())
-				.openOn(map);
-		}
-
-		map.on('click', onMapClick);
-		*/
+		//alert(myparam);
 	};
 	
 	// ... other actions here ...
