@@ -164,10 +164,20 @@ cr.plugins_.Leafletc2 = function(runtime)
 		var offy = top + jQuery(this.runtime.canvas).offset().top;
 		jQuery(this.elem).offset({left: offx, top: offy});
 	};
+	
 	instanceProto.tick = function()
 	{
 		this.updatePosition();
 	};
+	
+	instanceProto.onDestroy = function() {
+		if (this.runtime.isDomFree)
+			return;
+
+		jQuery(this.elem).remove();
+		this.elem = null;
+	};
+	
 	// only called if a layout object - draw to a canvas 2D context
 	instanceProto.draw = function(ctx)
 	{
