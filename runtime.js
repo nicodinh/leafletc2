@@ -178,6 +178,10 @@ cr.plugins_.Leafletc2 = function(runtime)
 
 		jQuery(this.elem).remove();
 		this.elem = null;
+		
+		/* TODO : eviter le redl du css */
+		jQuery(this.css1).remove();	
+		this.css1 = null;
 	};
 	
 	// only called if a layout object - draw to a canvas 2D context
