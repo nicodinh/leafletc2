@@ -67,9 +67,11 @@ cr.plugins_.Leafletc2 = function(runtime)
 		this.elem.id = "map" + this.uid;
 		this.elem.style.width = "" + this.width + "px";
 		this.elem.style.height = "" + this.height + "px";
-		jQuery(this.elem).appendTo(this.runtime.canvasdiv ? this.runtime.canvasdiv : "body");
 		
-		console.log(this.properties);
+		document.body.appendChild(this.elem);
+		//jQuery(this.elem).appendTo(this.runtime.canvasdiv ? this.runtime.canvasdiv : "body");
+		
+		//console.log(this.properties);
 		
 		// map options value
 		if (this.properties[11] === 0)
