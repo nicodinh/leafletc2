@@ -70,7 +70,7 @@ cr.plugins_.Leafletc2 = function(runtime)
 		
 		//document.body.appendChild(this.elem);
 		//jQuery(this.elem).appendTo(this.runtime.canvasdiv ? this.runtime.canvasdiv : "body");
-		console.log(this.runtime.canvasdiv);
+		//console.log(this.runtime.canvasdiv);
 		jQuery(this.elem).appendTo(this.runtime.canvasdiv);
 		
 		//console.log(this.properties);
