@@ -5,6 +5,6 @@ Leafletjs version="0.7.3"
 
 Construct 2 release 192 
 
-Note :
-
-Exported minified c2runtime not working.
+Current bugs :
+- exported minified c2runtime not working.
+- sometimes scroll bar appear.
