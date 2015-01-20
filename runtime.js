@@ -70,6 +70,7 @@ cr.plugins_.Leafletc2 = function(runtime)
 		
 		//document.body.appendChild(this.elem);
 		//jQuery(this.elem).appendTo(this.runtime.canvasdiv ? this.runtime.canvasdiv : "body");
+		console.log(this.runtime.canvasdiv);
 		jQuery(this.elem).appendTo(this.runtime.canvasdiv);
 		
 		//console.log(this.properties);
@@ -163,9 +164,20 @@ cr.plugins_.Leafletc2 = function(runtime)
 	{	
 		var left = this.x - (this.width / 2);
 		var top = this.y - (this.height / 2);
+		var bottom = this.y + (this.height / 2);
+		var right = this.x + (this.width / 2);
+		
+		// Is entirely offscreen or invisible: hide
+		if (!this.visible || !this.layer.visible || right <= 0 || bottom <= 0 || left >= this.runtime.width || top >= this.runtime.height)
+		{
+			jQuery(this.elem).hide();
+			return;
+		}
+		
 		var offx = left + jQuery(this.runtime.canvas).offset().left;
 		var offy = top + jQuery(this.runtime.canvas).offset().top;
 		jQuery(this.elem).offset({left: offx, top: offy});
+		
 	};
 	
 	instanceProto.tick = function()
