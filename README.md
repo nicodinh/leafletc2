@@ -3,7 +3,7 @@ Leafletjs plugin for Scirra Construct 2
 
 Leafletjs version="0.7.3"
 
-Construct 2 release 192 
+Construct 2 release 195 
 
 Current bugs :
 - exported minified c2runtime not working.
