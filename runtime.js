@@ -156,6 +156,25 @@ cr.plugins_.Leafletc2 = function(runtime)
 				BoundsLongitudeNorthEast: null,
 			}).addTo(this.map);
 
+		/* layer canvas example */	
+		/*
+		var canvasTiles = L.tileLayer.canvas();
+		canvasTiles.drawTile = function(canvas, tilePoint, zoom) {
+			var ctx = canvas.getContext('2d');
+			// draw something on the tile canvas
+			// circle radius
+			var radius = 12;
+			ctx.fillStyle = "rgb(200,0,0)";
+			ctx.fillRect (10, 10, 55, 50);
+
+			ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+			ctx.fillRect (30, 30, 55, 50);
+  
+		}		
+		this.map.addLayer(canvasTiles);
+		*/
+		/* end -- layer canvas example */
+		
 		this.updatePosition();
 		this.runtime.tickMe(this);		
 	};
